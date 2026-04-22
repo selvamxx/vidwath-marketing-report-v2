@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Performance Report — FY 2025–26 / 2026–27</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0a0a0a;
+            --ink-soft: #3a3a3a;
+            --ink-muted: #7a7a7a;
+            --rule: #d8d8d8;
+            --rule-light: #efefef;
+            --accent: #c8a96e;
+            --accent-light: #f7f1e6;
+            --white: #ffffff;
+            --bg: #fafafa;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 14px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            padding: 64px 0 48px;
+            border-bottom: 2px solid var(--ink);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .header-eyebrow {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+
+        .header-subtitle {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--ink-muted);
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .header-right {
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .header-meta {
+            font-size: 11px;
+            color: var(--ink-muted);
+            letter-spacing: 0.05em;
+            line-height: 2;
+        }
+
+        .header-meta strong {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink-soft);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ─── EXECUTIVE SUMMARY STRIP ─── */
+        .exec-strip {
+            margin: 48px 0 0;
+            background: var(--ink);
+            padding: 36px 48px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exec-strip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .exec-kpi {
+            padding: 0 24px;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            text-align: center;
+        }
+
+        .exec-kpi:first-child {
+            padding-left: 0;
+            text-align: left;
+        }
+
+        .exec-kpi:last-child {
+            padding-right: 0;
+            border-right: none;
+            text-align: right;
+        }
+
+        .exec-kpi-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .exec-kpi-value span {
+            color: var(--accent);
+        }
+
+        .exec-kpi-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* ─── SECTION ─── */
+        .section {
+            margin-top: 64px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-number {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+
+        /* ─── TABLES ─── */
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead tr {
+            background: var(--ink);
+        }
+
+        thead th {
+            padding: 14px 20px;
+            font-size: 9.5px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        thead th:first-child {
+            color: var(--white);
+        }
+
+        thead th.accent-col {
+            color: var(--accent);
+        }
+
+        /* Group headers inside thead */
+        thead .group-row th {
+            background: transparent;
+            padding: 20px 20px 4px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        thead .group-row th.span-divider {
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        thead .col-row th {
+            padding-top: 10px;
+            padding-bottom: 14px;
+        }
+
+        thead .col-row th.span-divider {
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--rule-light);
+            transition: background 0.15s;
+        }
+
+        tbody tr:hover {
+            background: var(--accent-light);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody td {
+            padding: 14px 20px;
+            font-size: 13px;
+            color: var(--ink-soft);
+            vertical-align: middle;
+        }
+
+        tbody td:first-child {
+            font-weight: 600;
+            color: var(--ink);
+            white-space: nowrap;
+        }
+
+        .td-em {
+            font-weight: 500;
+            color: var(--ink) !important;
+        }
+
+        .td-muted {
+            color: var(--ink-muted) !important;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        .td-accent {
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
+
+        .td-right {
+            text-align: right;
+        }
+
+        .span-divider {
+            border-left: 1px solid var(--rule);
+        }
+
+        /* ─── GROWTH TABLE ─── */
+        .growth-positive {
+            color: #2a7a4b;
+            font-weight: 600;
+        }
+
+        .growth-zero {
+            color: var(--ink-muted);
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .pill-green {
+            background: #e6f4ed;
+            color: #1a6637;
+        }
+
+        .pill-neutral {
+            background: var(--rule-light);
+            color: var(--ink-muted);
+        }
+
+        /* ─── FY PLAN GRID ─── */
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--rule);
+            border: 1px solid var(--rule);
+            margin-top: 4px;
+        }
+
+        .plan-card {
+            background: var(--white);
+            padding: 28px 24px;
+            position: relative;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+        }
+
+        .plan-card.meta-boost::before {
+            background: #3b5998;
+        }
+
+        .plan-card.meta-lead::before {
+            background: #e1306c;
+        }
+
+        .plan-card.google::before {
+            background: #4285f4;
+        }
+
+        .plan-card.total::before {
+            background: var(--accent);
+        }
+
+        .plan-card-channel {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: 12px;
+        }
+
+        .plan-card-budget {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .plan-card-output {
+            font-size: 12px;
+            color: var(--ink-soft);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .plan-card-output strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+
+        /* ─── CLOSING ─── */
+        .closing {
+            margin-top: 72px;
+            padding: 48px;
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .closing-line {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            flex: 1;
+        }
+
+        .closing-line em {
+            font-style: normal;
+            color: var(--accent);
+        }
+
+        .closing-badge {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .closing-badge-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1;
+        }
+
+        .closing-badge-label {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-top: 6px;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            margin-top: 56px;
+            padding-top: 20px;
+            border-top: 1px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            color: var(--ink-muted);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-tag {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        /* ─── PRINT ─── */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                padding: 0 20px 40px;
+            }
+
+            .header {
+                padding: 30px 0 24px;
+            }
+
+            .exec-strip {
+                break-inside: avoid;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+
+            .plan-grid {
+                break-inside: avoid;
+            }
+
+            .closing {
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .page {
+                padding: 0 20px 60px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                text-align: left;
+            }
+
+            .exec-strip {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 28px 24px;
+            }
+
+            .exec-kpi,
+            .exec-kpi:first-child,
+            .exec-kpi:last-child {
+                text-align: left;
+                padding: 0;
+                border: none;
+            }
+
+            .plan-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .closing {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .closing-line {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <div class="header-eyebrow">Confidential · Management Review</div>
+                <h1 class="header-title">Marketing Performance<br>Report</h1>
+                <p class="header-subtitle">Education Business Unit &nbsp;|&nbsp; FY 2025–26 Review &amp; FY 2026–27 Plan
+                </p>
+            </div>
+            <div class="header-right">
+                <div class="header-meta">
+                    <strong>Period</strong>
+                    Oct 2025 – Mar 2026
+                </div>
+                <div class="header-meta" style="margin-top:12px">
+                    <strong>Prepared</strong>
+                    April 2026
+                </div>
+                <div class="header-meta" style="margin-top:12px">
+                    <strong>Classification</strong>
+                    Internal / Restricted
+                </div>
+            </div>
+        </header>
+
+        <!-- EXECUTIVE SUMMARY STRIP -->
+        <div class="exec-strip">
+            <div class="exec-kpi">
+                <div class="exec-kpi-value">₹38<span>K</span></div>
+                <div class="exec-kpi-label">Total Spend</div>
+            </div>
+            <div class="exec-kpi">
+                <div class="exec-kpi-value">1.5<span>M+</span></div>
+                <div class="exec-kpi-label">Reach Achieved</div>
+            </div>
+            <div class="exec-kpi">
+                <div class="exec-kpi-value">238</div>
+                <div class="exec-kpi-label">Leads Generated</div>
+            </div>
+            <div class="exec-kpi">
+                <div class="exec-kpi-value">200<span>+</span></div>
+                <div class="exec-kpi-label">App Installs</div>
+            </div>
+            <div class="exec-kpi">
+                <div class="exec-kpi-value">8<span>K+</span></div>
+                <div class="exec-kpi-label">New Followers</div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: PERFORMANCE & BUDGET OVERVIEW -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">Performance &amp; Budget Overview</h2>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr class="group-row">
+                            <th rowspan="2" style="vertical-align:bottom; padding-bottom:14px;">Channel</th>
+                            <th colspan="2" style="text-align:center;">FY 2025–26 &nbsp;·&nbsp; Last 6 Months</th>
+                            <th colspan="2" class="span-divider accent-col" style="text-align:center;">FY 2026–27
+                                &nbsp;·&nbsp; Annual
+                                Plan</th>
+                        </tr>
+                        <tr class="col-row">
+                            <th>Spend</th>
+                            <th>Output</th>
+                            <th class="span-divider">Budget</th>
+                            <th>Projected Output</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tbody>
+                        <tr>
+                            <td>Meta Boosting</td>
+                            <td class="td-em">₹20,000</td>
+                            <td>1.5M+ reach</td>
+                            <td class="span-divider td-em">₹1,50,000</td>
+                            <td class="td-accent">8M – 10M reach</td>
+                        </tr>
+                        <tr>
+                            <td>Meta Lead Ads</td>
+                            <td class="td-em">₹20,000</td>
+                            <td>238 leads</td>
+                            <td class="span-divider td-em">₹1,50,000</td>
+                            <td class="td-accent">1,200 – 1,500 leads</td>
+                        </tr>
+                        <tr>
+                            <td>Google Ads</td>
+                            <td class="td-muted">—</td>
+                            <td class="td-muted">—</td>
+                            <td class="span-divider td-em">₹1,80,000</td>
+                            <td class="td-accent">1,000 – 1,200 leads</td>
+                        </tr>
+                        <tr>
+                            <td>App Installs</td>
+                            <td class="td-em">₹12,000</td>
+                            <td>200+ installs</td>
+                            <td class="span-divider td-muted">Support</td>
+                            <td class="td-muted">Support activity</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- SECTION 2: SOCIAL MEDIA GROWTH -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Social Media Growth Snapshot</h2>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Starting Followers</th>
+                            <th>Current Followers</th>
+                            <th>Net Growth</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Instagram</td>
+                            <td>13</td>
+                            <td class="td-em">1,401</td>
+                            <td><span class="growth-positive">+1,388</span></td>
+                            <td><span class="pill pill-green">High Growth</span></td>
+                        </tr>
+                        <tr>
+                            <td>Facebook Page</td>
+                            <td>0</td>
+                            <td class="td-em">1,593</td>
+                            <td><span class="growth-positive">+1,593</span></td>
+                            <td><span class="pill pill-green">Built from Zero</span></td>
+                        </tr>
+                        <tr>
+                            <td>LinkedIn (Company)</td>
+                            <td>2,300</td>
+                            <td class="td-em">4,343</td>
+                            <td><span class="growth-positive">+2,043</span></td>
+                            <td><span class="pill pill-green">Strong Growth</span></td>
+                        </tr>
+                        <tr>
+                            <td>YouTube</td>
+                            <td>47,800</td>
+                            <td class="td-em">48,835</td>
+                            <td><span class="growth-positive">+1,035</span></td>
+                            <td><span class="pill pill-green">Steady Growth</span></td>
+                        </tr>
+                        <tr>
+                            <td>Twitter / X</td>
+                            <td>25</td>
+                            <td class="td-em">25</td>
+                            <td><span class="growth-zero">0</span></td>
+                            <td><span class="pill pill-neutral">Dormant</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FY 2026–27 PLAN -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">FY 2026–27 &nbsp;·&nbsp; Annual Plan</h2>
+            </div>
+            <div class="plan-grid">
+                <div class="plan-card meta-boost">
+                    <div class="plan-card-channel">Meta Boosting</div>
+                    <div class="plan-card-budget">₹1,50,000</div>
+                    <div class="plan-card-output">
+                        Brand awareness &amp; reach
+                        <strong>12M – 15M</strong>
+                        projected reach
+                    </div>
+                </div>
+                <div class="plan-card meta-lead">
+                    <div class="plan-card-channel">Meta Lead Ads</div>
+                    <div class="plan-card-budget">₹1,50,000</div>
+                    <div class="plan-card-output">
+                        Performance campaigns
+                        <strong>2,000 – 2,500</strong>
+                        projected leads
+                    </div>
+                </div>
+                <div class="plan-card google">
+                    <div class="plan-card-channel">Google Ads</div>
+                    <div class="plan-card-budget">₹1,80,000</div>
+                    <div class="plan-card-output">
+                        High-intent search
+                        <strong>1,000 – 1,200</strong>
+                        projected leads
+                    </div>
+                </div>
+                <div class="plan-card total">
+                    <div class="plan-card-channel">Combined Pipeline</div>
+                    <div class="plan-card-budget" style="color:var(--accent);">₹4,80,000</div>
+                    <div class="plan-card-output">
+                        Total annual budget
+                        <strong>3,000 – 3,700</strong>
+                        leads / year
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div style="margin-top:24px; font-size:13px; color:#555;">
+            With increased investment, we can scale awareness, engagement, follower growth, and qualified leads—driving
+            faster conversions and revenue growth.
+        </div>
+        <!-- CLOSING -->
+        <div class="closing">
+            <div class="closing-line">
+                ₹38K proved the model.<br>
+                <em>₹4.8L scales it.</em>
+            </div>
+            <div class="closing-badge">
+                <div class="closing-badge-label">Budget<br>Scale-up</div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span class="footer-text">For internal management use only &nbsp;·&nbsp; Not for external
+                distribution</span>
+            <span class="footer-tag">Marketing · FY 2025–26 / 2026–27</span>
+        </footer>
+
+    </div>
+</body>
+
+</html>
